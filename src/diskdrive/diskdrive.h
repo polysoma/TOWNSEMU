@@ -362,9 +362,11 @@ public:
 	static std::string MediaTypeToString(unsigned int mediaType);
 
 	int GetTrackReg(void) const;
+	void SetTrackReg(int num);
 	int GetSectorReg(void) const;
 	int GetSectorReg(unsigned int drvSel) const;
 	void SetSectorReg(int num);
+	void SetDataReg(int num);
 
 
 	virtual uint32_t SerializeVersion(void) const;
