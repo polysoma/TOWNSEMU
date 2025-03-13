@@ -2897,6 +2897,7 @@ void FsGuiMainCanvas::CD_SelectImageFile(FsGuiPopUpMenuItem *)
 		fdlg->fileExtensionArray.Append(L".ISO");
 		fdlg->fileExtensionArray.Append(L".MDS");
 		fdlg->fileExtensionArray.Append(L".CCD");
+		fdlg->fileExtensionArray.Append(L".CDM");
 		fdlg->defaultFileName=profileDlg->CDImgTxt->GetWString();
 		fdlg->BindCloseModalCallBack(&THISCLASS::CD_ImageFileSelected,this);
 		AttachModalDialog(fdlg);
