@@ -192,7 +192,7 @@ unsigned int DiscImage::Open(const std::string &fName)
 			return OpenMDS(Mds);
 		}
 	}
-	if(".CCD"==ext)
+	if(".CCD"==ext || ".CDM"==ext)
 	{
 		return OpenCCD(fName);
 	}
