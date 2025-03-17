@@ -137,7 +137,11 @@ public:
 	void BrowseSaveAs(const wchar_t label[],FsGuiTextBox *txt,std::vector <const wchar_t *> extList);
 	void OnSelectFileSaveAs(FsGuiDialog *dlg,int returnCode);
 
+private:
+	TownsProfile GetProfileInternal(YsString (*textBoxConverter)(const FsGuiTextBox* textBox)) const;
+public:
 	TownsProfile GetProfile(void) const;
+	TownsProfile GetProfileBySystemEncoding(void) const;
 	void SetProfile(const TownsProfile &profile);
 
 	void SetDefaultFMVolume(void);

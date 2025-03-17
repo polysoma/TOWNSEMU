@@ -697,7 +697,7 @@ void FsGuiMainCanvas::Run(void)
 template <class VMClass>
 void FsGuiMainCanvas::ReallyRunWithinSameProcess(VMClass &VM)
 {
-	VM.profile=profileDlg->GetProfile();
+	VM.profile=profileDlg->GetProfileBySystemEncoding();
 	if(""==VM.profile.CMOSFName)
 	{
 		VM.profile.CMOSFName=GetCMOSFileName();
@@ -741,7 +741,7 @@ bool FsGuiMainCanvas::ReallyRun(bool usePipe)
 	}
 
 
-	auto profile=profileDlg->GetProfile();
+	auto profile=profileDlg->GetProfileBySystemEncoding();
 	separateProcess=profile.separateProcess; // This is the only chance to change this flag.
 
 	{
