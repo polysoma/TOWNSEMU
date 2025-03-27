@@ -169,6 +169,7 @@ public:
 		GLuint mainTexId,statusTexId,pauseIconTexId,menuIconTexId;
 
 		GLuint GenTexture(void);
+		GLuint GenTextureWithFilter(void);
 		void UpdateTexture(GLuint texId,int wid,int hei,const unsigned char *rgba) const;
 		void DrawTextureRect(int x0,int y0,int x1,int y1) const;
 

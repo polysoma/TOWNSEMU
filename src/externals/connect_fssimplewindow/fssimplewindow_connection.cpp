@@ -1659,7 +1659,7 @@ void FsSimpleWindowConnection::WindowConnection::Start(void)
 	winThr.winHei=480;
 
 	glClearColor(0,0,0,0);
-	mainTexId=GenTexture();
+	mainTexId=GenTextureWithFilter();
 	statusTexId=GenTexture();
 
 	pauseIconTexId=GenTexture();
@@ -2109,6 +2109,29 @@ GLuint FsSimpleWindowConnection::WindowConnection::GenTexture(void)
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
 	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+
+	return texId;
+}
+
+GLuint FsSimpleWindowConnection::WindowConnection::GenTextureWithFilter(void)
+{
+	GLuint texId;
+
+	glGenTextures(1,&texId);  // Reserve one texture identifier
+	glBindTexture(GL_TEXTURE_2D,texId);  // Making the texture identifier current (or bring it to the deck)
+
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_S,GL_CLAMP);
+	glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_WRAP_T,GL_CLAMP);
+	if (autoScaling || (shared.scalingX % 100) != 0 || (shared.scalingY % 100) !=0)
+	{
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR);
+	}
+	else
+	{
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST);
+	}
 
 	return texId;
 }
